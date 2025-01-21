@@ -1,10 +1,13 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CompleteLogin : MonoBehaviour
 {
-    public void LoadPlayScene()
+    public GameObject LoginCanvas;
+    public GameObject PlayCanvas;
+
+    public void LoggedIn()
     {
-        SceneManager.LoadScene("PlayScene");
+        LoginCanvas.SetActive(false);
+        PlayCanvas.SetActive(true);
     }
 }
