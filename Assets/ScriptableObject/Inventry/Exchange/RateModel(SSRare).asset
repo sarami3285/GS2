@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da521ea4a00e451d8ad0b66274d0734e, type: 3}
-  m_Name: ExchangeNamespace
+  m_Script: {fileID: 11500000, guid: c0294d5accbcc4b9ea137742443d0645, type: 3}
+  m_Name: RateModel(SSRare)
   m_EditorClassIdentifier: 
-  namespaceName: exchange
+  Namespace: {fileID: 11400000, guid: 3e0a064ba67656848ad3b4a0f1c79987, type: 2}
+  rateName: SSRaretrade
