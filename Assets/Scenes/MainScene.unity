@@ -5528,6 +5528,8 @@ GameObject:
   - component: {fileID: 474534693}
   - component: {fileID: 474534692}
   - component: {fileID: 474534694}
+  - component: {fileID: 474534696}
+  - component: {fileID: 474534695}
   m_Layer: 5
   m_Name: Login
   m_TagString: Untagged
@@ -5670,6 +5672,52 @@ MonoBehaviour:
   LoginCanvas: {fileID: 1181632123}
   PlayCanvas: {fileID: 315773189}
   MainBGM: {fileID: 1696373307}
+--- !u!114 &474534695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474534690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed22e88e4a9e459f9091eddcea88a64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnFetched:
+    m_PersistentCalls:
+      m_Calls: []
+  onError:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 960496748}
+        m_TargetAssemblyTypeName: Gs2.Unity.Util.Gs2ClientHolder, Gs2.Unity
+        m_MethodName: DebugErrorHandler
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &474534696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474534690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3294e94c76641a0919380e64d3359d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _account: {fileID: 11400000, guid: ce237a1de64d1b341958de28cc1a7b4c, type: 2}
+  OnUpdate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &487656257
 GameObject:
   m_ObjectHideFlags: 0
@@ -19085,7 +19133,19 @@ MonoBehaviour:
   format: '{userId}'
   onUpdate:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1625211545}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1625211545
 MonoBehaviour:
   m_ObjectHideFlags: 0
