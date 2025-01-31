@@ -3,15 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - Enemy
+  - CoinExchange
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - BackGround
   - Water
   - UI
-  - 
+  - Bullet
   - 
   - 
   - 
@@ -38,6 +42,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Bullet
+    uniqueID: 1944596047
+    locked: 0
+  - name: BackGround
+    uniqueID: 900790077
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
