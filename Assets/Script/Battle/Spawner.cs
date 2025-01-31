@@ -18,6 +18,8 @@ public class Spawner : MonoBehaviour
     // GameManagerの参照
     private GameManager gameManager;
 
+    public GameObject LevelIncrease;
+
     void Start()
     {
         ClearScreen.SetActive(false);
@@ -109,6 +111,7 @@ public class Spawner : MonoBehaviour
         {
             enemyBullet.Clear();
             ClearScreen.SetActive(true);
+            LevelIncrease.SetActive(true);
             Debug.Log("ゲームクリア!");
             gameOver = true;
         }

@@ -7,9 +7,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.up * speed * Time.deltaTime);
-
-        // ‰æ–ÊŠO‚Åíœ
-        if (transform.position.y > 4.5)
+        if (transform.position.y > 4.5|| transform.position.x > 2.5|| transform.position.x < -2.5|| transform.position.y < -4.5)
         {
             Destroy(gameObject);
         }
@@ -19,7 +17,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Destroy(gameObject); // ’e‚ð”j‰ó
+            Destroy(gameObject);
         }
     }
 }

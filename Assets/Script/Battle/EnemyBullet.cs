@@ -6,9 +6,7 @@ public class EnemyBullet : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime;
-
-        if (time > 10f)
+        if (transform.position.y > 4.5 || transform.position.x > 2.5 || transform.position.x < -2.5 || transform.position.y < -4.5)
         {
             Destroy(gameObject);
         }
