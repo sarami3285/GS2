@@ -8,22 +8,25 @@ public class ChangeUIButton : MonoBehaviour
 
     void Start()
     {
-        Button button = GetComponent<Button>();
-        button.onClick.AddListener(() =>
+        if (AfterScreen != null && BeforeScreen != null)
         {
-            if (AfterScreen == null)
+            Button button = GetComponent<Button>();
+            button.onClick.AddListener(() =>
             {
-                BeforeScreen.SetActive(false);
-            }
-            else if (BeforeScreen == null)
-            {
-                AfterScreen.SetActive(true);
-            }
-            else
-            {
-                BeforeScreen.SetActive(false);
-                AfterScreen.SetActive(true);
-            }
-        });
+                if (AfterScreen == null)
+                {
+                    BeforeScreen.SetActive(false);
+                }
+                else if (BeforeScreen == null)
+                {
+                    AfterScreen.SetActive(true);
+                }
+                else
+                {
+                    BeforeScreen.SetActive(false);
+                    AfterScreen.SetActive(true);
+                }
+            });
+        }
     }
 }

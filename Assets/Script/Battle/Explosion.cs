@@ -3,15 +3,16 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     public Animator animator;
-    public Transform childObject;  // 子オブジェクト（敵）のTransform
+    public Transform childObject;
     public float speed = 500f;
     bool Move = true;
+    public int Attack;
 
     void Start()
     {
         if (animator == null)
         {
-            animator = GetComponent<Animator>(); // Animatorを自動的に取得
+            animator = GetComponent<Animator>();
         }
     }
 
@@ -22,7 +23,6 @@ public class Explosion : MonoBehaviour
             Spawner.enemyCount--;
             Destroy(gameObject);
         }
-
         if (Move)
         {
             transform.Translate(Vector3.down * speed * Time.deltaTime);
@@ -32,19 +32,16 @@ public class Explosion : MonoBehaviour
     public void AnimStart()
     {
         Move = false;
-        // 爆発アニメーション開始
         animator.SetTrigger("Explosion");
     }
 
     public void AnimEnd()
     {
-        // 爆発アニメーション終了
         animator.SetTrigger("AllEnd");
         Spawner.enemyCount--;
-        Destroy(this.gameObject);  // 親オブジェクトを削除
+        Destroy(this.gameObject);
     }
 
-    // 子オブジェクトを親の位置に追従させる
     public void SetChildPositionZero()
     {
         if (childObject != null)

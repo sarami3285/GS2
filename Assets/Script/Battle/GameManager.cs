@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -5,6 +6,7 @@ public class GameManager : MonoBehaviour
     public float timer = 0f;          // ゲームの経過時間
     private float maxTime = 40f;      // 制限時間（40秒）
     public Spawner spawner;           // Spawnerへの参照
+    public PlayerController player;
 
     public GameObject CoinExchange;
 
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         timer = 0f;  // タイマーをリセット
         spawner.ResetSpawner(); // Spawnerのリセット処理を呼び出す
+        player.ResetHP();
     }
 
     public void ActivateCoinExchange()

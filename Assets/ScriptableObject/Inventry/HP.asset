@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8dc095a5059342fe968863cc9bf5978, type: 3}
-  m_Name: OwnItemSet
+  m_Name: HP
   m_EditorClassIdentifier: 
   Inventory: {fileID: 11400000, guid: d9ef82b475b592446a5f3490f44f76b0, type: 2}
-  itemName: Ncard
+  itemName: Rcard
   itemSetName: 

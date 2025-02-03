@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int HP = 3;
+    private int HP;
     public Explosion explosionManager;  // 親オブジェクト（ExplosionManager）
+    public Bullet bullet;
     private SpriteRenderer spriteRenderer;
 
     public GameObject Bullet;
@@ -13,18 +14,23 @@ public class Enemy : MonoBehaviour
     public bool Enemy2;
     public bool Enemy3;
 
+    public int damage;
+
     void Start()
     {
+        HP = 1 + Spawner.level / 4;
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (Enemy2)
         {
-            InvokeRepeating(nameof(Enemy2AI), 1f, 2f); // 2秒ごとに発射
+            HP = 2 + Spawner.level / 2;
+            InvokeRepeating(nameof(Enemy2AI), 0f, 1.8f); // 2秒ごとに発射
         }
 
         if (Enemy3)
         {
-            InvokeRepeating(nameof(Enemy3AI), 1f, 3f); // 3秒ごとに発射
+            HP = 8 + Spawner.level * 2; ;
+            InvokeRepeating(nameof(Enemy3AI), 0f, 2.6f); // 3秒ごとに発射
         }
     }
 
@@ -46,10 +52,9 @@ public class Enemy : MonoBehaviour
 
         if (other.CompareTag("Bullet"))
         {
-            HP--;
+            HP -= bullet.damage;
             if (HP == 0)
             {
-
                 // 爆発エフェクトを開始
                 explosionManager.AnimStart();
 

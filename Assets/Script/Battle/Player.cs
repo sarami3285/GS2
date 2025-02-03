@@ -1,15 +1,22 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 2.5f;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
     public Transform bulletParent;
     public Transform topRightLimit;
     public Transform bottomLeftLimit;
+    public int maxHP = 1;
+    private int currentHP;
+    public int attack = 1;
+    public Text HPtext;
+    private float mutekiTime;
 
     public SkillData currentSkill; // スキルのデータ
+    public Image WeaponImage;
 
     public AudioSource audioSource;
     public AudioClip ShotSE;
@@ -17,8 +24,12 @@ public class PlayerController : MonoBehaviour
     private float nextFire = 0f;
     private float minX, maxX, minY, maxY;
 
+
     void Start()
     {
+        ResetHP();
+        UpdateWeaponImage();
+
         audioSource = GetComponent<AudioSource>();
 
         if (topRightLimit != null && bottomLeftLimit != null)
@@ -36,8 +47,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        muteki();
         Move();
         Attack();
+    }
+
+    public void ResetHP()
+    {
+        currentHP = maxHP;
+        HPtext.text = "電磁シールド出力 : " + currentHP.ToString();
     }
 
     void Move()
@@ -99,13 +117,40 @@ public class PlayerController : MonoBehaviour
     public void ChangeSkill(SkillData newSkill)
     {
         currentSkill = newSkill;
+        UpdateWeaponImage();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("EnemyBullet"))
+        if ((other.CompareTag("Enemy") || other.CompareTag("EnemyBullet")) && mutekiTime <= 0f)
         {
-            Destroy(gameObject);
+            currentHP--;
+            mutekiTime = 2f;
+            HPtext.text = "電磁シールド出力 : " + currentHP.ToString();
+            if (currentHP <= -1)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    void UpdateWeaponImage()
+    {
+        if (WeaponImage != null && currentSkill != null && currentSkill.WeaponImage != null)
+        {
+            WeaponImage.sprite = currentSkill.WeaponImage;  // スキルの武器画像をUIに反映
+        }
+        else
+        {
+            WeaponImage.sprite = null;  // 画像がない場合は空にする
+        }
+    }
+
+    void muteki()
+    {
+        if (mutekiTime > 0)
+        {
+            mutekiTime -= Time.deltaTime;
         }
     }
 }

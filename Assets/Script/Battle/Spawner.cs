@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
+    public Image WeaponImage;
+    public Text Level;
     public GameObject[] enemyPrefabs; // 敵のプレハブ（3種類）
     public float spawnRate = 1.0f;    // 敵の出現間隔
     public Transform topRightLimit;   // 右上の制限オブジェクト
@@ -13,12 +16,15 @@ public class Spawner : MonoBehaviour
     public static int enemyCount = 0;  // 現在の敵の数
 
     public GameObject ClearScreen;
+    public GameObject OverScreen;
     public EnemyBullet enemyBullet;
 
     // GameManagerの参照
     private GameManager gameManager;
 
     public GameObject LevelIncrease;
+
+    public static int level;
 
     void Start()
     {
@@ -41,23 +47,16 @@ public class Spawner : MonoBehaviour
     }
 
     void Update()
-    {
-        Debug.Log("現在の enemyCount: " + enemyCount);
+    {   
         if (gameOver)
             return;
 
-        // 制限時間の経過をカウント
         if (gameManager != null && gameManager.timer >= 0f && gameManager.timer < 40f)
         {
-            // ゲームのタイマーが0から40の間であればスポーン
-            if (gameManager.timer >= 20f)
-            {
-                spawnRate = 2.0f; // スポーン間隔を増加
-            }
+
         }
         else
         {
-            // タイマーが40秒を超えた場合、ゲームクリア判定
             CheckGameClear();
         }
     }
@@ -104,12 +103,16 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        OverScreen.SetActive(true);
+    }
+
     // ゲームクリアの判定
     void CheckGameClear()
     {
         if (enemyCount == 0)
         {
-            enemyBullet.Clear();
             ClearScreen.SetActive(true);
             LevelIncrease.SetActive(true);
             Debug.Log("ゲームクリア!");
@@ -123,6 +126,13 @@ public class Spawner : MonoBehaviour
         enemyCount = 0;
         gameOver = false;
         spawnRate = 1.0f; // スポーン間隔をリセット
+
+        string text = Level.text;
+        int number;
+        if (int.TryParse(text, out number))
+        {
+            level = number;
+        }
     }
 }
 

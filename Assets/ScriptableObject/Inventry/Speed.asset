@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa3e7ab00d9ce746ade02f2681466c4, type: 3}
-  m_Name: StormShot
+  m_Script: {fileID: 11500000, guid: b8dc095a5059342fe968863cc9bf5978, type: 3}
+  m_Name: Speed
   m_EditorClassIdentifier: 
-  skillName: StormShot
-  bulletCount: 7
-  isSpreadType: 1
-  isBurstType: 0
-  fireRate: 0.45
-  WeaponImage: {fileID: 21300000, guid: eea3b4ff4a40904469616046e9703401, type: 3}
+  Inventory: {fileID: 11400000, guid: d9ef82b475b592446a5f3490f44f76b0, type: 2}
+  itemName: SRcard
+  itemSetName: 

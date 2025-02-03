@@ -9,9 +9,11 @@ public class StaminaRecover : MonoBehaviour
     private float timer;                // タイマー用変数
     private bool isCounting = false;    // カウント中かどうか
     private bool hasActivated = false;  // targetObject を一度だけ有効化するためのフラグ
+    public GameObject BattleButton;
+    public GameObject StaminaButton;
 
-    public Text sliderValueText; // スライダー値の表示用 (Textに変更)
-    public Text timerText;       // タイマーの残り時間表示用 (Textに変更)
+    public Text sliderValueText; // スライダー値の表示用 
+    public Text timerText;       // タイマーの残り時間表示用 
 
     private void Start()
     {
@@ -56,6 +58,17 @@ public class StaminaRecover : MonoBehaviour
                 targetObject.SetActive(true); // オブジェクトを有効化
                 hasActivated = true;         // 一度だけ有効化するようにフラグを設定
             }
+        }
+
+        if (staminaSlider.value * 5 >= staminaSlider.maxValue)
+        {
+            StaminaButton.SetActive(false);
+            BattleButton.SetActive(true);
+        }
+        else
+        {
+            StaminaButton.SetActive(true);
+            BattleButton.SetActive(false);
         }
     }
 

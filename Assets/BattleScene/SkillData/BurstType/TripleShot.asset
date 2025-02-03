@@ -17,3 +17,4 @@ MonoBehaviour:
   isSpreadType: 0
   isBurstType: 1
   fireRate: 0.5
+  WeaponImage: {fileID: 21300000, guid: 1539dc850573a7142845d0a48af0e276, type: 3}

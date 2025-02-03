@@ -60,13 +60,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f155034c5260c408073935480d5128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 3
   explosionManager: {fileID: 1773175649116857640}
+  bullet: {fileID: 4950435134611205729, guid: 5ee48403188358c499bad8dde7279125, type: 3}
   Bullet: {fileID: 5683856155713897156, guid: b997a592d1df12f4aa655344f95bd293, type: 3}
   Player: {fileID: 8429310850522043928, guid: 65185357a6027df4ba6debbf2e94d684, type: 3}
   BulletSpeed: 5
   Enemy2: 1
   Enemy3: 0
+  damage: 0
 --- !u!61 &6576980219820058490
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -262,6 +263,7 @@ MonoBehaviour:
   animator: {fileID: 3725701500301290010}
   childObject: {fileID: 7748005531909376838}
   speed: 2.4
+  Attack: 0
 --- !u!212 &621112720567770560
 SpriteRenderer:
   m_ObjectHideFlags: 0
